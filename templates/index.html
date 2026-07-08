@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarValue AI - Real-Time Valuation Engine</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" onclick="showSection('landing')" class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-compass-drafting"></i>
+                </div>
+                <span>CarValue <span class="logo-accent">AI</span></span>
+            </a>
+
+            <nav>
+                <a href="#" onclick="showSection('landing')" id="nav-predict" class="active">Predict</a>
+                <a href="#" onclick="showSection('form')" id="nav-market">Market</a>
+            </nav>
+
+            <div>
+                <button onclick="showSection('form')" class="btn-header">
+                    Get Started
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <div id="section-landing" class="container">
+            
+            <div class="grid-12" style="margin-bottom: 5rem;">
+                <div class="col-span-6 landing-content">
+                    <span class="badge-pill">
+                        <span class="pulse-dot"></span>
+                        Real-Time Valuation Engine
+                    </span>
+                    
+                    <h1 class="hero-title text-left">
+                        Predict Your <br>
+                        Car's <span class="gradient-text">Market <br>Value</span> Instantly
+                    </h1>
+                    
+                    <p class="hero-desc">
+                        Get an AI-powered estimate of your used car's selling price based on its specifications, historical market data, and regional trends.
+                    </p>
+                    
+                    <div class="button-group">
+                        <button onclick="showSection('form')" class="btn-primary">
+                            Predict Price <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button onclick="scrollToWorkflow()" class="btn-outline">
+                            View Trends
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-span-6" style="display: flex; justify-content: center;">
+                    <div class="concept-card">
+                        
+                        <div class="badge-ai-precision">
+                            <div class="precision-badge-icon">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                            <div class="precision-badge-text">
+                                <p>AI PRECISION</p>
+                                <p>99.2%</p>
+                            </div>
+                        </div>
+
+                        <div class="grid-gridline"></div>
+                        
+                        <img class="concept-card-img dynamic-car-image" alt="Premium AI Car Visualization" onerror="handleImageLoadError(this)">
+
+                        <div class="badge-market-sentiment">
+                            <span class="sentiment-label-text">Market Sentiment</span>
+                            <div class="sentiment-tracker-track">
+                                <div class="sentiment-tracker-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="workflow-section">
+                <div class="section-header">
+                    <h2>Precision Workflow</h2>
+                    <p>Our four-stage valuation engine uses real-time market data to give you the most accurate price estimate in seconds.</p>
+                </div>
+
+                <div class="workflow-row">
+                    <div class="workflow-connector"></div>
+                    
+                    <div class="workflow-step">
+                        <div class="workflow-icon">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                        <h3>Enter Details</h3>
+                        <p>Input make, model, year, and mileage into our intuitive interface.</p>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="workflow-icon">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3>AI Processes</h3>
+                        <p>Our neural network parses thousands of live data points across the web.</p>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="workflow-icon">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3>ML Model</h3>
+                        <p>Regression models adjust for local demand, season, and condition.</p>
+                    </div>
+
+                    <div class="workflow-step">
+                        <div class="workflow-icon">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <h3>Price Displayed</h3>
+                        <p>Receive an instant, downloadable report with your fair market value.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-header">
+                    <h2>Engineered for Excellence</h2>
+                    <p>A suite of powerful features designed to provide enterprise-grade automotive insights.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon-container">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3>AI Powered</h3>
+                        <p>Leverage the same technology used by top automotive hedge funds and fintech institutions worldwide.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-container">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <div class="feature-title-row">
+                            <h3>High Accuracy</h3>
+                            <span class="feature-badge">98.2% Precision</span>
+                        </div>
+                        <p>Our estimations fall within 2% of actual sale prices on 95% of mainstream car models.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-container">
+                            <i class="fa-solid fa-gauge-high"></i>
+                        </div>
+                        <h3>Edge Speed</h3>
+                        <p>Valuation results in under 3 seconds with our globally distributed edge computing nodes.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-container">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <h3>Seamless UX</h3>
+                        <p>A streamlined experience designed to minimize friction. Get valuations without mandatory sign-ups.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-container">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3>Bank-Grade</h3>
+                        <p>Advanced encryption ensures your data stays private. We never sell lead information to third parties.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon-container">
+                            <i class="fa-solid fa-mobile-screen"></i>
+                        </div>
+                        <h3>Responsive</h3>
+                        <p>Optimized for desktop and mobile. Access critical market data while you're at the dealership.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="section-header">
+                    <h2>Common Questions</h2>
+                    <p>Everything you need to know about our high-precision valuation engine.</p>
+                </div>
+
+                <div class="faq-accordion-container">
+                    <div class="faq-item">
+                        <button onclick="toggleFAQ(this)" class="faq-trigger">
+                            <span>How accurate is the valuation?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-content">
+                            <p>Our platform continuously trains regression and deep-learning neural networks on millions of active and historical sales points. The algorithm is refined daily, securing a 98.2% parity against registered sales receipts.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button onclick="toggleFAQ(this)" class="faq-trigger">
+                            <span>What ML models do you use?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-content">
+                            <p>We deploy an ensemble method featuring XGBoost Gradient Boosting, Random Forests, and custom neural architectures optimized for multidimensional lookup tables matching geographical metrics and model wear parameters.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button onclick="toggleFAQ(this)" class="faq-trigger">
+                            <span>Which brands do you support?</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-content">
+                            <p>We support almost all domestic and international brands ranging from daily commuters like Honda, Toyota, and Hyundai, up to electric pioneers (Tesla, Rivian, Lucid) and premier luxury brands (Mercedes-Benz, BMW, Porsche, Audi).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="section-form" class="container hidden">
+            <div class="grid-12">
+                
+                <div class="col-span-5 form-left-panel">
+                    <div style="text-align: left; display: flex; flex-direction: column; gap: 1rem;">
+                        <h1 class="hero-title" style="font-size: 2.25rem;">
+                            Calculate <span class="gradient-text">Market Value</span>
+                        </h1>
+                        <p class="hero-desc" style="font-size: 0.8125rem;">
+                            Leverage our proprietary AI engine trained on over 12 million real-world transactions to get the most accurate automotive valuation in the fintech sector.
+                        </p>
+                    </div>
+
+                    <div class="concept-card">
+                        <div class="badge-ai-precision">
+                            <div class="precision-badge-icon">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <div class="precision-badge-text">
+                                <p>ENGINE MODE</p>
+                                <p>99.2%</p>
+                            </div>
+                        </div>
+
+                        <div class="grid-gridline"></div>
+                        
+                        <img class="concept-card-img dynamic-car-image" alt="Automotive Intelligence Preview" onerror="handleImageLoadError(this)">
+
+                        <div class="badge-market-sentiment">
+                            <span class="sentiment-label-text">Market Sentiment</span>
+                            <div class="sentiment-tracker-track">
+                                <div class="sentiment-tracker-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <p>98.4%</p>
+                            <p>AI Accuracy</p>
+                        </div>
+                        <div class="stat-box">
+                            <p>12M+</p>
+                            <p>Data Points</p>
+                        </div>
+                        <div class="stat-box">
+                            <p>240ms</p>
+                            <p>Latency</p>
+                        </div>
+                        <div class="stat-box">
+                            <p>250+</p>
+                            <p>Models</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-7">
+                    <form id="calculator-form" onsubmit="handlePrediction(event)" class="card neon-glow-indigo form-layout">
+                        
+                        <div class="form-section">
+                            <div class="form-section-header">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <h2>Basic Information</h2>
+                            </div>
+
+                            <div class="form-inputs-grid">
+                                <div class="input-group">
+                                    <label for="input-brand">Brand</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-car input-icon-left"></i>
+                                        <select id="input-brand" required class="form-control">
+                                            <option value="" disabled selected>Select Brand</option>
+                                            <option value="Audi">Audi</option>
+                                            <option value="BMW">BMW</option>
+                                            <option value="Bentley">Bentley</option>
+                                            <option value="Datsun">Datsun</option>
+                                            <option value="Ferrari">Ferrari</option>
+                                            <option value="Force">Force</option>
+                                            <option value="Ford">Ford</option>
+                                            <option value="Honda">Honda</option>
+                                            <option value="Hyundai">Hyundai</option>
+                                            <option value="Isuzu">Isuzu</option>
+                                            <option value="Jaguar">Jaguar</option>
+                                            <option value="Jeep">Jeep</option>
+                                            <option value="Kia">Kia</option>
+                                            <option value="Land Rover">Land Rover</option>
+                                            <option value="Lexus">Lexus</option>
+                                            <option value="MG">MG</option>
+                                            <option value="Mahindra">Mahindra</option>
+                                            <option value="Maruti">Maruti</option>
+                                            <option value="Maserati">Maserati</option>
+                                            <option value="Mercedes-AMG">Mercedes-AMG</option>
+                                            <option value="Mercedes-Benz">Mercedes-Benz</option>
+                                            <option value="Mini">Mini</option>
+                                            <option value="Nissan">Nissan</option>
+                                            <option value="Porsche">Porsche</option>
+                                            <option value="Renault">Renault</option>
+                                            <option value="Rolls-Royce">Rolls-Royce</option>
+                                            <option value="Skoda">Skoda</option>
+                                            <option value="Tata">Tata</option>
+                                            <option value="Toyota">Toyota</option>
+                                            <option value="Volkswagen">Volkswagen</option>
+                                            <option value="Volvo">Volvo</option>
+                                        </select>
+                                        <i class="fa-solid fa-chevron-down input-icon-right"></i>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="input-model">Model</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-pen input-icon-left"></i>
+                                        <input type="text" id="input-model" required placeholder="e.g. City ZX, Creta, Model 3" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="input-year">Year</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-calendar-days input-icon-left"></i>
+                                        <input type="number" id="input-year" required min="2000" max="2027" placeholder="2021" value="2021" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="input-km-driven">KM Driven</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-gauge input-icon-left"></i>
+                                        <input type="number" id="input-km-driven" required min="0" max="1000000" placeholder="32,450" value="32450" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <div class="form-section-header">
+                                <i class="fa-solid fa-sliders"></i>
+                                <h2>Technical Specifications</h2>
+                            </div>
+
+                            <div class="form-inputs-grid">
+                                <div class="input-group">
+                                    <label for="input-fuel">Fuel Type</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-gas-pump input-icon-left"></i>
+                                        <select id="input-fuel" class="form-control">
+                                            <option value="Petrol" selected>Petrol</option>
+                                            <option value="Diesel">Diesel</option>
+                                            <option value="Electric">Electric</option>
+                                            <option value="CNG">CNG</option>
+                                        </select>
+                                        <i class="fa-solid fa-chevron-down input-icon-right"></i>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="input-transmission">Transmission</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-gear input-icon-left"></i>
+                                        <select id="input-transmission" class="form-control">
+                                            <option value="Automatic" selected>Automatic</option>
+                                            <option value="Manual">Manual</option>
+                                        </select>
+                                        <i class="fa-solid fa-chevron-down input-icon-right"></i>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="input-engine-cc">Engine CC</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-bolt-lightning input-icon-left"></i>
+                                        <input type="number" id="input-engine-cc" required min="0" max="10000" placeholder="1498" value="1498" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="input-power">Max Power (bhp)</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-horse input-icon-left"></i>
+                                        <input type="number" id="input-power" required min="0" max="2000" placeholder="119" value="119" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="input-seats">Seats</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-chair input-icon-left"></i>
+                                        <input type="number" id="input-seats" required min="2" max="15" placeholder="5" value="5" class="form-control">
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="input-seller">Seller Type</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-store input-icon-left"></i>
+                                        <select id="input-seller" class="form-control">
+                                            <option value="Dealer" selected>Dealer</option>
+                                            <option value="Individual">Individual</option>
+                                        </select>
+                                        <i class="fa-solid fa-chevron-down input-icon-right"></i>
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <label for="input-mileage-kml">Mileage (km/l)</label>
+                                    <div class="input-wrapper">
+                                        <i class="fa-solid fa-droplet input-icon-left"></i>
+                                        <input type="number" step="0.1" id="input-mileage-kml" required min="0" max="100" placeholder="18.5" value="18.5" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <button type="submit" id="btn-submit" class="btn-submit-form">
+                                Predict Price <i class="fa-solid fa-chart-column"></i>
+                            </button>
+                            
+                            <div id="ai-loading-container" class="ai-progress-box hidden">
+                                <div class="ai-progress-header">
+                                    <div class="spinner-mini"></div>
+                                    <span id="engine-status-text">Querying Flask Predictive Model...</span>
+                                </div>
+                                <div class="ai-progress-steps">
+                                    <p id="calc-step-1" class="active">✓ Compiling input configuration details...</p>
+                                    <p id="calc-step-2" class="opacity-40">→ Encoding categorical text specifications...</p>
+                                    <p id="calc-step-3" class="opacity-40">→ Feeding features to XGBoost predictive model...</p>
+                                    <p id="calc-step-4" class="opacity-40">→ Aligning pricing outputs with model vectors...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+         <div id="section-result" class="container hidden">
+            
+            <div class="result-actions-bar">
+                <button onclick="showSection('form')" class="btn-back">
+                    <i class="fa-solid fa-chevron-left"></i> Edit Vehicle Details
+                </button>
+                <span class="badge-calculated">Calculated Result</span>
+            </div>
+
+            <div class="grid-12" style="margin-bottom: 4rem;">
+                
+                <div class="col-span-5 card neon-glow-indigo" style="padding: 2.5rem;">
+                    <div class="pricing-dashboard">
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <span class="valuation-success-badge">
+                                <i class="fa-solid fa-circle-check"></i> Valuation Complete
+                            </span>
+
+                            <div class="price-output-column">
+                                <span>Estimated Market Value</span>
+                                <h2 id="predicted-price-display">₹ 7,85,000</h2>
+                            </div>
+
+                            <div class="metrics-flex-row">
+                                <div class="price-output-column" style="gap: 0.125rem;">
+                                    <span style="font-size: 9px;">Price Range</span>
+                                    <p id="price-range-display" style="font-size: 1.125rem; font-weight: 800; color: white;">₹7.4L - ₹8.1L</p>
+                                </div>
+
+                                <div class="gauge-block">
+                                    <div class="gauge-svg-container">
+                                        <svg class="gauge-svg">
+                                            <circle cx="32" cy="32" r="26" class="gauge-circle-track" />
+                                            <circle id="gauge-circle" cx="32" cy="32" r="26" class="gauge-circle-progress" />
+                                        </svg>
+                                        <span class="gauge-text" id="confidence-percentage">85%</span>
+                                    </div>
+                                    <div style="text-align: left; line-height: 1.2;">
+                                        <span style="font-size: 9px; color: var(--text-muted); font-weight: 700; text-transform: uppercase;">Confidence</span>
+                                        <p style="font-size: 12px; font-weight: 800; color: white; margin-top: 2px;">AI Accuracy High</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-actions">
+                            <button onclick="downloadReport()" class="btn-download">
+                                <i class="fa-solid fa-download"></i> Download Report
+                            </button>
+                            <button onclick="showSection('form')" class="btn-predict-again">
+                                <i class="fa-solid fa-rotate-right"></i> Predict Again
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-7" style="display: flex; flex-direction: column; gap: 1.5rem; justify-content: space-between;">
+                    
+                    <div class="concept-card">
+                        <div class="scanning-beam"></div>
+                        
+                        <div class="badge-ai-precision">
+                            <div class="precision-badge-icon">
+                                <i class="fa-solid fa-radar"></i>
+                            </div>
+                            <div class="precision-badge-text">
+                                <p>REAL-TIME appraisal</p>
+                                <p>99.2%</p>
+                            </div>
+                        </div>
+
+                        <div class="grid-gridline"></div>
+                        
+                        <div class="scanning-details-box" id="scanning-hud">
+                            <p><span style="height: 6px; width: 6px; border-radius: 50%; background-color: var(--success-color); display: inline-block;"></span> SYSTEM ONLINE</p>
+                            <p>LATENCY: 12ms (LOCAL)</p>
+                            <p>GPU SPEED: EDGE DEPLOYED</p>
+                        </div>
+
+                        <img class="concept-card-img dynamic-car-image" alt="Scanned Car Valuation" onerror="handleImageLoadError(this)">
+
+                        <div class="badge-market-sentiment">
+                            <span class="sentiment-label-text">Market Sentiment</span>
+                            <div class="sentiment-tracker-track">
+                                <div class="sentiment-tracker-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-summary-card">
+                        <div class="vehicle-summary-title">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span>Vehicle Summary</span>
+                        </div>
+
+                        <div class="summary-tags-container">
+                            <span class="summary-tag">
+                                <i class="fa-solid fa-car"></i>
+                                <span id="summary-title">2021 Honda City ZX</span>
+                            </span>
+                            <span class="summary-tag">
+                                <i class="fa-solid fa-road"></i>
+                                <span id="summary-mileage">32,450 km</span>
+                            </span>
+                            <span class="summary-tag">
+                                <i class="fa-solid fa-gas-pump"></i>
+                                <span id="summary-fuel">Petrol</span>
+                            </span>
+                            <span class="summary-tag">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Mumbai, MH</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="vehicle-summary-card" id="ai-insight-box" style="margin-top: 1rem;">
+                        <div class="vehicle-summary-title" style="color: var(--accent-light);">
+                            <i class="fa-solid fa-brain"></i>
+                            <span>AI Analyst Insight</span>
+                        </div>
+                        <p id="ai-insight-display" style="font-size: 11px; color: var(--text-muted); line-height: 1.5;">
+                            The Honda City variant maintains exceptional resale retention due to robust mechanical reliability and continuous commuter market demand. Its automatic petrol transmission configuration holds high premium value in congested tier-1 urban centers.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="bottom-stats-row">
+                <div class="bottom-stat">
+                    <p>Total Predictions</p>
+                    <p>1,284</p>
+                </div>
+                <div class="bottom-stat">
+                    <p>Avg. Accuracy</p>
+                    <p>98.2%</p>
+                </div>
+                <div class="bottom-stat">
+                    <p>Models Compared</p>
+                    <p>12</p>
+                </div>
+                <div class="bottom-stat">
+                    <p>Features Used</p>
+                    <p>24</p>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top-row">
+                <div class="footer-brand">
+                    <a href="#" onclick="showSection('landing')" class="footer-brand-logo">
+                        <div class="footer-brand-icon">
+                            <i class="fa-solid fa-compass-drafting"></i>
+                        </div>
+                        <span>CarValue <span class="logo-accent">AI</span></span>
+                    </a>
+                    <p class="footer-brand-desc">
+                        The world's leading automotive fintech platform providing real-time AI-driven valuation insights for professionals and consumers.
+                    </p>
+                </div>
+
+                <div class="footer-links-grid">
+                    <div class="footer-col">
+                        <h4>Product</h4>
+                        <ul>
+                            <li><a href="#" onclick="showSection('landing')">Valuation Engine</a></li>
+                            <li><a href="#" onclick="showSection('form')">Market Analytics</a></li>
+                            <li><a href="#">API Solutions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom-row">
+                <p>&copy; 2026 CarValue AI. Automotive Fintech Excellence.</p>
+                <div class="footer-social-links">
+                    <a href="#" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" aria-label="GitHub Code Repository"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="{{ url_for('static', filename='script/script.js') }}"></script>
+</body>
+</html>
