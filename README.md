@@ -5,7 +5,6 @@
 ![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black?style=for-the-badge&logo=flask)
 ![XGBoost](https://img.shields.io/badge/XGBoost-Machine%20Learning-orange?style=for-the-badge)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML-F7931E?style=for-the-badge&logo=scikitlearn)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 CarValue AI is an end-to-end Machine Learning web application that predicts the fair market value of used cars using an advanced **XGBoost Regression Model**. The application combines Machine Learning, Flask, and a modern responsive frontend to provide users with instant and accurate used car price predictions.
 
