@@ -184,6 +184,7 @@ function downloadReport() {
     // Brand Title and Sub-header taglines
     doc.setFont("Helvetica", "bold");
     doc.setFontSize(22);
+    doc.setTextColor(79, 70, 229);
     doc.text("CarValue AI", mLeft, 13);
     
     doc.setFont("Helvetica", "normal");
